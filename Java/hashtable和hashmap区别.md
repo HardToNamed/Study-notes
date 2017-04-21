@@ -1,0 +1,5 @@
+a.Hashtable是继承自陈旧的Dictionary类的，HashMap继承自AbstractMap类同时是Java 1.2引进的Map接口的一个实现。
+　　b.也许最重要的不同是Hashtable的方法是同步的，而HashMap的方法不是。这就意味着，然你可以不用采取任何特殊的行为就可以在一个 多线程的应用程序中用一个Hashtable，但你必须同样地为一个HashMap提供外同步。一个方便的方法就是利用Collections类的静态的synchronizedMap()方法，它创建一个线程安全的Map对象，并把它作为一个封装的对象来返回。这个对象的方法可以让你同步访问潜在的HashMap
+C.HashTable的方法是同步的，HashMap未经同步，所以在多线程场合要手动同步HashMap这个区别就像Vector和ArrayList一样。 
+D.HashTable不允许null值(key和value都不可以),HashMap允许null值(key和value都可以)。 
+E.HashTable有一个contains(Object value)，功能和containsValue(Object value)功能一样。
