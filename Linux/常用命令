@@ -1,0 +1,78 @@
+readonly 变量名， 设置变量不可修改
+ls -ld显示文件目录
+pwd查看当前目录
+cd 进入目标
+ln 创建链接
+wc -l 计数
+su切换用户
+ssh登录远程
+ping查看网络
+arping查看指定网络通信
+scp拷贝远程
+cp拷贝
+mv转移
+mkdir 创建目录
+touch创建文件
+rm 删除
+rmdir删除目录
+alias 设置命令别名
+env 查看当前变量
+history 查看历史命令
+unset 删除变量
+$PS1 设置bash提示符
+set -o 查看shell选项，set +o 选项名 关闭选项，set -o 选项名 开启选项
+sort 文本排序， -n 按数字排序，-r倒序排序，-u去重
+uniq 文本去重，-c 统计重复行次数，-d 只显示重复行，-u只显示不重复，-w只比较前n个字符，-s跳过前n个字符
+diff 比较两个文件
+hostname 查看主机名
+who 登录用户
+uptime 查看系统运行时间
+uname 系统信息
+date 系统时间
+paste 按行合并文件， -d‘|‘指定使用的分隔符（默认空格）
+
+dd 备份拷贝文件
+find 查找，常用选项-name，-perm， -user/-nouser，-mmin
+grep和find |xargs grep 过滤，常用选项-v，-c，-G正则，-color高亮显示，-n行数
+echo 输出
+vi 文本编辑，:
+cat输出文本
+tee输出并保存日志
+test 测试
+tar 常用-zxvf解压gz文件，-zcvf压缩gz文件
+unzip解压zip
+rpm -ivh安装rpm，rpm -e卸载rpm
+sed批量修改， -i源文件修改，s修改，a添加，i插入
+awk编辑器，FS分隔符，NR当前行数，NF字段总数
+cut裁剪 -d 裁剪分词， -f裁剪后取的字符串位置
+stat查看文件详情，常用stat -c "%U" 查看用户名
+
+df 查看分区情况
+du查看文件情况
+fdisk磁盘管理
+mkfs.ext格式化文件系统
+lsof -i查看端口进程
+ps -ef 查看进程
+netstat -anp查看端口
+crontab 执行计划任务
+at 在指定的时间执行命令
+
+
+
+locale查看字符编码
+date查看日期
+chmod 设置权限
+chown设置属主
+watch -n 1 -d “脚本”当脚本有循环输出时使用watch动态刷新脚本的输出
+
+read -p "提示:" -ers name 
+$#参数个数
+$@所有参数
+shift 删除第一个参数
+&后台执行
+nohup 不挂起进程
+
+
+1 > /dev/null 2>&1 语句含义：
+1 > /dev/null ： 首先表示标准输出重定向到空设备文件，也就是不输出任何信息到终端，说白了就是不显示任何信息。
+2>&1 ：接着，标准错误输出重定向（等同于）标准输出，因为之前标准输出已经重定向到了空设备文件，所以标准错误输出也重定向到空设备文件。
