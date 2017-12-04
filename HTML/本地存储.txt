@@ -1,0 +1,33 @@
+本地存储只将数据存储在硬盘上, 等待用户读取, cookie则是将数据存储在服务器上, 本地存储的数据可达5Mb, cookie最多存储4kb的数据
+
+sessionStorage 基于session的存储, 关闭浏览器后删除
+localStorage 本地存储
+
+检查浏览器是否支持
+if(typeof(Storage) !== "undefined" ){ 
+} 
+else {
+不支持存储
+}
+
+sessionStorage创建
+<script type="text/JavaScript">
+sessionStorage.abc=" ";
+</script>
+
+localStorage创建
+<script type="text/JavaScript">
+localStorage.abc=" ";
+</script>
+
+localStorage.clear() 清除本地存储数据
+
+遍历数据
+for(var i=0; i<localStorage.length;i++){
+  var key = localStorage.key(i);
+  var value = localStorage.getItem(key);
+}
+
+创建一个本地sqlite3数据库
+<script type="text/JavaScript">var db = openDatabase("mydb", "1.1", "",200000); </script> 
+
