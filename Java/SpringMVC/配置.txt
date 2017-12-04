@@ -1,0 +1,62 @@
+web.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <!-- 配置Spring IoC配置文件路径 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml</param-value>
+    </context-param>
+    <!-- 配置ContextLoaderListener用以初始化Spring IoC容器 -->
+    <listener>
+      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!-- 配置DispatcherServlet -->
+    <servlet>
+        <!-- 注意：Spring MVC框架会根据servlet-name配置，找到/WEB-INF/dispatcher-servlet.xml作为配置文件载入Web工程中 -->
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- 使得Dispatcher在服务器启动的时候就初始化 -->
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <!-- Servlet拦截配置 -->
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+</web-app>
+
+
+<?xml version='1.0' encoding='UTF-8' ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+   xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:mvc="http://www.springframework.org/schema/mvc"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+   <!-- 使用注解驱动 -->
+   <mvc:annotation-driven />
+   <!-- 定义扫描装载的包 -->
+   <context:component-scan base-package="com.*" />
+   <!-- 定义视图解析器 -->
+   <!-- 找到Web工程/WEB-INF/JSP文件夹，且文件结尾为jsp的文件作为映射 -->
+   <bean id="viewResolver"
+      class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+      p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
+   <!-- 如果有配置数据库事务,需要开启注解事务的，需要开启这段代码 -->
+   <tx:annotation-driven transaction-manager="transactionManager" /> 
+</beans>
+
+@Controller("myController")
+//表明当请求的URI在/my下的时候才有该控制器响应
+@RequestMapping("/my")
+public class MyController {
+   //表明URI是/index的时候该方法才请求
+   @RequestMapping("/index")
+
+@RequestParam("id") 表示入参
+@SessionAttribute("username") 表示从session中获取参数
+@RequestBody 参数将json字符串转换为pojo对象
+return "redirect:./show.do" 重定向到show页面
+RedirectAttribute ra传入, ra.addFlashAttribute("role", role) 传递pojo对象给下一个地址
