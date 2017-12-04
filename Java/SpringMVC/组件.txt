@@ -1,0 +1,8 @@
+MultipartResolver 文件解析器
+LocaleResolver 国际化解析器
+ThemeResolver 主题解析器
+HandlerResolver 提供一个控制器的方法和一些拦截器
+handlerAdapter 处理器适配器
+HandlerExceptionResolver 处理器异常解析器
+RequestToViewNameTranslator 视图逻辑名称转换器
+ViewResolver 视图解析器
