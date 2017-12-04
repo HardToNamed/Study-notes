@@ -1,0 +1,47 @@
+<canvas id="myCanvas" width="300" height="300" style="border:1px solid#c3c3c3;">not support</canvas> 创建画布
+
+<script>
+            var c = document.getElementById("myCanvas"); //获取画布
+            var ctx = c.getContext("2d"); //获取画笔
+            ctx.fillStyle="#FF0000"; //设置颜色
+            ctx.fillRect(0,0,150,75); //画一个矩形
+</script>
+
+fillRect 绘制矩形, 没有边框, 只有填充色
+strokeRect 绘制一个带边框的矩形
+clearRect 清除一个矩形区域
+
+绘制圆形
+beginPath() 开始路径绘制
+arc(x,y,radius,startAngle, endAngle, anticlockwise) x,y定义原点, radius是圆的半径, startAngle和endAngle是弧度, anticlckwise表示是否顺时针
+closePath() 结束路径绘制
+fill 进行填充
+stroke 方法设置边框
+
+绘制直线
+moveTo(x, y) 移动到新坐标
+lineTo(x,y) 绘制线条到目标坐标
+strockType 指定线条的颜色
+lineWidth 设置线条的粗细
+
+绘制线性渐变
+var gradient = ctx.createLinearGradient(0,0,0,canvas.height);
+gradient.addColorStop(0,"#fff")
+gradient.addColorStop(1,"#000")
+ctx.fillStyle = gradient;
+ctx.fillRect(0,0,75,75);
+
+绘制径向渐变
+var gradient = ctx.createRadialGradient(150,150,0,150,150,150);
+
+
+translate(x,y) 变换原点坐标
+scale(x,y) 缩放图形
+rotate(angle) 旋转图像
+
+shadowOffsetX, shadowOffsetY 设置阴影位移
+shadowBlur 设置阴影模糊程度, shadowColor 设置颜色
+
+drawImage(image, dx, dy) 画图
+drawImage(image, dx, dy, dw, dh) 缩放后画图
+drawImage(image, sx,sy,sw,sh, dx, dy, dw, dh) 裁剪后画图
