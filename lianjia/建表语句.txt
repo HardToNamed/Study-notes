@@ -1,0 +1,7 @@
+create table subway (id int primary key, name nvarchar(200) not null);
+create table station (name nvarchar(200) primary key, line int not null,  foreign key (line) references subway(id));
+create table city (area nvarchar(200) primary key, station nvarchar(200) not null, foreign key (station) references station(name));
+create table xiaoqu (name nvarchar(200) primary key, area nvarchar(200) not null, foreign key(area) references city(area), station nvarchar(200), foreign key (station) references station(name), location text, year int);
+create table huxing (size int not null, xiaoqu nvarchar(200), foreign key(xiaoqu) references xiaoqu(name), photo blob); 
+create table fangzi (id varchar(200) primary key, name text, xiaoqu nvarchar(200), foreign key(xiaoqu) references xiaoqu(name), size int not null, floor varchar(20) not null, description text);
+create table fangjia (zongjia int, pingjunjia int, onlinedate date, offlinedate date, fangzi varchar(200) not null, foreign key fangzi references fangzi(id));
